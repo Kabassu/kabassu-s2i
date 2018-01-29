@@ -34,6 +34,8 @@ COPY ./.s2i/bin/ /usr/local/s2i
 
 RUN chown -R 1001:1001 /opt/openshift /opt/.m2
 RUN chmod -R go+rw /opt/openshift
+RUN chmod -R go+rw /usr/local/s2i
+
 
 # This default user is created in the openshift/base-centos7 image
 USER 1001
@@ -43,4 +45,4 @@ EXPOSE 8080
 EXPOSE 5701
 
 # Set the default CMD for the image
-CMD ["usage"]
+CMD ["/usr/local/s2i/usage"]
