@@ -35,6 +35,7 @@ COPY ./.s2i/bin/ /usr/local/s2i
 RUN chown -R 1001:1001 /opt/openshift /opt/.m2
 RUN chmod -R go+rw /opt/openshift
 RUN chmod -R go+rw /usr/local/s2i
+RUN chmod -R 755 /usr/local/s2i
 
 
 # This default user is created in the openshift/base-centos7 image
