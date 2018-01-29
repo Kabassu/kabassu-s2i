@@ -47,7 +47,7 @@
                 "output": {
                     "to": {
                         "kind": "ImageStreamTag",
-                        "name": "vertx-s2i:latest"
+                        "name": "kabassu-s2i:latest"
                     }
                 },
                 "resources": {}
@@ -177,7 +177,7 @@
                             "sourceStrategy": {
                                 "from": {
                                     "kind": "ImageStreamTag",
-                                    "name": "vertx-s2i:latest"
+                                    "name": "kabassu-s2i:latest"
                                 }
                             }
                         },
