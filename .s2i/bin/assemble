@@ -118,6 +118,6 @@ fi
 
 echo "Application jar files is located in /opt/openshift/"
 echo "Files located in the application directory:"
-ls -la /opt/openshift
-tree  /opt/openshift
+ls -la /opt/app-root
+tree  /opt/app-root
 
