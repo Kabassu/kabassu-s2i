@@ -7,7 +7,7 @@ before_script:
   - wget https://github.com/openshift/source-to-image/releases/download/v1.1.8/source-to-image-v1.1.8-e3140d01-linux-amd64.tar.gz -O /tmp/s2i.tar.gz
   - tar -xvf /tmp/s2i.tar.gz
   - ls /tmp
-  - export PATH=$PATH:$PWD/s2i
+  - export PATH=$PATH:$PWD
 
 script:
   - chmod +x .s2i/bin/assemble .s2i/bin/run .s2i/bin/save-artifacts .s2i/bin/usage
