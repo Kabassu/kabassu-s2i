@@ -34,7 +34,7 @@ HOME=/opt/app-root/src
 LOCAL_SOURCE_DIR=${HOME}/source
 mkdir -p ${LOCAL_SOURCE_DIR}
 
-DEPLOY_DIR=/opt/openshift
+DEPLOY_DIR=/opt/app-root/source
 
 function copy_artifacts() {
   if [ -d ${LOCAL_SOURCE_DIR}/$1 ]; then
