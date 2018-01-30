@@ -17,7 +17,8 @@ RUN yum install -y --enablerepo=centosplus \
     mkdir -p /opt/app-root/source && chmod -R a+rwX /opt/app-root/source && \
     mkdir -p /opt/s2i/destination && chmod -R a+rwX /opt/s2i/destination && \
     mkdir -p /opt/app-root/src && chmod -R a+rwX /opt/app-root/src && \
-    mkdir -p /opt/.m2 && chmod -R a+rwX /opt/.m2
+    mkdir -p /opt/.m2 && chmod -R a+rwX /opt/.m2 && \
+    yum -y install tree
 
 ENV PATH=/opt/maven/bin/:/opt/gradle/bin/:$PATH M2_LOCAL=/opt/.m2
 
@@ -32,11 +33,9 @@ LABEL io.k8s.description="Platform for building Vert.x applications with maven o
 LABEL io.openshift.s2i.scripts-url=image:///usr/local/s2i
 COPY ./.s2i/bin/ /usr/local/s2i
 
-RUN chown -R 1001:1001 /opt/openshift /opt/.m2
-RUN chmod -R go+rw /opt/openshift
-RUN chmod -R go+rw /usr/local/s2i
-RUN chmod -R 755 /usr/local/s2i
+RUN chgrp -Rf root /opt/openshift/ && chmod -Rf g+w /opt/openshift/
 
+RUN chown -R 1001:0 /opt/openshift /opt/.m2
 
 # This default user is created in the openshift/base-centos7 image
 USER 1001
@@ -46,4 +45,4 @@ EXPOSE 8080
 EXPOSE 5701
 
 # Set the default CMD for the image
-CMD ["/usr/local/s2i/usage"]
+CMD ["usage"]

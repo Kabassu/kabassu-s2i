@@ -121,7 +121,7 @@
                 {
                     "description": "Git Directory",
                     "name": "CONTEXT_DIR",
-                    "value": "test/test-app-maven"
+                    "value": "/"
                 },
                 {
                     "description": "Application options. These options will be passed to the application command line",
@@ -197,7 +197,7 @@
                         "name": "${APPLICATION_NAME}"
                     },
                     "spec": {
-                        "dockerImageRepository": "",
+                        "dockerImageRepository": "kabassu/kabassu",
                         "tags": [{
                             "name": "latest"
                         }]
@@ -279,10 +279,11 @@
                                     }],
                                     "resources": {},
                                     "terminationMessagePath": "/dev/termination-log",
-                                    "imagePullPolicy": "IfNotPresent",
+                                    "imagePullPolicy": "Always",
                                     "securityContext": {
+                                        "runAsUser":1001,
                                         "capabilities": {},
-                                        "privileged": false
+                                        "privileged": true
                                     }
                                 }],
                                 "restartPolicy": "Always",

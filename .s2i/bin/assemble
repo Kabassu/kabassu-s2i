@@ -58,7 +58,7 @@ if [ -f "$LOCAL_SOURCE_DIR/build.gradle" ]; then
    pushd ${LOCAL_SOURCE_DIR} &> /dev/null
 
   if [ -z "$BUILDER_ARGS" ]; then
-    export BUILDER_ARGS="build"
+    export BUILDER_ARGS=""
   fi
 
   echo "Found gradle.build ... attempting to build with 'gradle -s ${BUILDER_ARGS}'"
@@ -67,7 +67,7 @@ if [ -f "$LOCAL_SOURCE_DIR/build.gradle" ]; then
   gradle --version
 
   # Execute the actual build
-  gradle -s ${BUILDER_ARGS}
+  gradle
 
   ERR=$?
   if [ ${ERR} -ne 0 ]; then
@@ -116,10 +116,8 @@ if [ ! -z "${USE_JAVA_DIAGNOSTICS}" ]; then
 fi
 
 
-if [ $(ls /opt/openshift/*.jar | wc -l) -eq 1 ]; then
-  echo "Application jar files is located in /opt/openshift/"
-	echo "Files located in the application directory:"
-	ls -l /opt/openshift
-else
-  exit 1
-fi
+echo "Application jar files is located in /opt/openshift/"
+echo "Files located in the application directory:"
+ls -la /opt/openshift
+tree  /opt/openshift
+
