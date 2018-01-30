@@ -12,7 +12,7 @@ before_script:
 script:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     chmod +x .s2i/bin/assemble .s2i/bin/run .s2i/bin/save-artifacts .s2i/bin/usage;
-    docker build -t kabassu/kabassu-s2i .
+    docker build -t kabassu/kabassu-s2i . ;
     docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD";
     docker push kabassu/kabassu-s2i;
     fi
