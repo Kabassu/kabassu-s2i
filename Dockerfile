@@ -34,6 +34,13 @@ LABEL io.openshift.s2i.scripts-url=image:///usr/local/s2i
 COPY ./.s2i/bin/ /usr/local/s2i
 
 # This default user is created in the openshift/base-centos7 image
+RUN chown -R 1001:0 /opt/openshift /opt/.m2
+USER 1001
+
+USER root
+
+chmod -R 777 /opt/openshift
+
 USER 1001
 
 # Set the default port for applications HTTP and event bus
