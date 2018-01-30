@@ -39,7 +39,7 @@ USER 1001
 
 USER root
 
-chmod -R 777 /opt/openshift
+RUN chmod -R 777 /opt/openshift
 
 USER 1001
 
