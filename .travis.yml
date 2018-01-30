@@ -9,6 +9,7 @@ before_script:
   - export PATH=$PATH:$PWD/s2i
 
 script:
+  - chmod +x .s2i/bin/assemble .s2i/bin/run .s2i/bin/save-artifacts .s2i/bin/usage
   - docker build -t kabassu/kabassu-s2i .
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD";
