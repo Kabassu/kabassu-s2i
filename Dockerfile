@@ -33,7 +33,7 @@ LABEL io.k8s.description="Platform for building Vert.x applications with maven o
 LABEL io.openshift.s2i.scripts-url=image:///usr/local/s2i
 COPY ./.s2i/bin/ /usr/local/s2i
 
-RUN chgrp -Rf root /opt/openshift/ && chmod -Rf g+w /opt/openshift/
+RUN chgrp -Rf root /opt/openshift && chmod -Rf g+w /opt/openshift
 
 RUN chown -R 1001:0 /opt/openshift /opt/.m2
 
