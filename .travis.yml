@@ -3,11 +3,17 @@ sudo: required
 services:
   - docker
 
+before_script:
+  - wget https://github.com/openshift/source-to-image/releases/download/v1.1.8/source-to-image-v1.1.8-e3140d01-linux-amd64.tar.gz -O /tmp/s2i.tar.gz
+  - tar -xvf /tmp/s2i.tar.gz
+  - export PATH=$PATH:$PWD/s2i
+
 script:
   - docker build -t kabassu/kabassu-s2i .
-
-after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD";
     docker push kabassu/kabassu-s2i;
+    s2i build https://github.com/Kabassu/kabassu kabassu/kabassu-s2i:latest kabassu/kabassu
+    docker push kabassu/kabassu;
     fi
+
