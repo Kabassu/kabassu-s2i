@@ -22,7 +22,7 @@ export JGROUP_CONF=""
 #    fi
 #fi
 
-cp -a /opt/openshift /opt/app-root/source
+cp -a /opt/openshift/ /opt/app-root/source
 
 ls -las
 tree
