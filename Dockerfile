@@ -29,7 +29,6 @@ LABEL io.k8s.description="Platform for building Vert.x applications with maven o
       io.openshift.expose-services="8080:http" \
       io.openshift.tags="builder,maven-3,gradle-4,vert.x"
 
-# COPY ./<builder_folder>/ /opt/openshift/
 LABEL io.openshift.s2i.scripts-url=image:///usr/local/s2i
 COPY ./.s2i/bin/ /usr/local/s2i
 
@@ -37,11 +36,6 @@ COPY ./.s2i/bin/ /usr/local/s2i
 RUN chown -R 1001:0 /opt/openshift /opt/.m2
 USER 1001
 
-USER root
-
-RUN chmod -R 777 /opt/openshift
-
-USER 1001
 
 # Set the default port for applications HTTP and event bus
 EXPOSE 8080
