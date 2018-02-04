@@ -1,5 +1,5 @@
 FROM openshift/base-centos7
-MAINTAINER Clement Escoffier <clement@apache.org>
+MAINTAINER Kabassu
 
 # Install build tools on top of base image
 ENV GRADLE_VERSION 4.1
